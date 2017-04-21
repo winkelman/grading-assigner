@@ -10,6 +10,8 @@ import pytz
 from dateutil import parser
 from datetime import datetime, timedelta
 
+from gmail_sms import send_text
+
 utc = pytz.UTC
 
 # Script config
@@ -55,6 +57,8 @@ def alert_for_assignment(current_request, headers):
         logger.info("View it here: " + REVIEW_URL.format(sid=current_request['submission_id']))
         logger.info("=================================================")
         logger.info("Continuing to poll...")
+        # added, send text
+        send_text()
         return None
     return current_request
 
